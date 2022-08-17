@@ -3,6 +3,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const users = require("./db/users");
 const flash = require("connect-flash");
 const ejs = require("ejs");
 const app = express();

@@ -1,6 +1,6 @@
 import React from "react";
 
-function DailyPic({url, explanation}){
+const DailyPic = ({url, explanation}) => {
     return (
         <div className="dailyPic">
             <div className="title">

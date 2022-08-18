@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import './App.css';
 import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
+import MarsRoverImages from "./components/marsImages";
 
 function App() {
 
   const [pic, setPic] = useState("");
-  const [marsPics, setMarsPics] = useState("");
+  const [marsPics, setMarsPics] = useState([]);
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
 
@@ -17,10 +18,9 @@ function App() {
   }
 
   const marsRoverPics = async () => {
-    const response = await fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2022-5-3&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ")
+    const response = await fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2022-5-3&camera=fhaz&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ")
     const data = await response.json();
-    console.log(data.photos[0]);
-    setMarsPics(data);
+    setMarsPics(data.photos);
   }
 
   useEffect(() => {
@@ -39,6 +39,12 @@ function App() {
         url={pic.url}
         explanation = {pic.explanation}
       />
+      {marsPics.map(image => (
+       <MarsRoverImages 
+        key={image.key}
+        url={image.img_src}
+       />
+      ))}
     </div>
   );
 }

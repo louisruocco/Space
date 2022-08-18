@@ -29,6 +29,7 @@ function App() {
       <DailyPic
         key={pic.date}
         url={pic.url}
+        explanation = {pic.explanation}
       />
     </div>
   );

@@ -5,7 +5,7 @@ import DailyPic from "./components/dailypic";
 
 function App() {
 
-  const [pic, setPic] = useState([]);
+  const [pic, setPic] = useState("");
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
 

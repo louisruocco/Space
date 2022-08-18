@@ -18,12 +18,11 @@ const sessionStore = new MongoDBStore({
     collection: process.env.DB_SESS_COLLECTION
 })
 
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 app.use(express.static("public"));
 app.use("/css", express.static("./public/css"));
-app.use("/js", express.static("./public/js"));
 app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use(flash());
 app.use(session({
     name: process.env.SESS_NAME, 

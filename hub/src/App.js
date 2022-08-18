@@ -6,18 +6,26 @@ import DailyPic from "./components/dailypic";
 function App() {
 
   const [pic, setPic] = useState("");
+  const [marsPics, setMarsPics] = useState("");
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
 
   const dailyPic = async () => {
     const response = await fetch(picOfDay);
     const data = await response.json();
-    console.log(data);
     setPic(data);
+  }
+
+  const marsRoverPics = async () => {
+    const response = await fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2022-5-3&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ")
+    const data = await response.json();
+    console.log(data.photos[0]);
+    setMarsPics(data);
   }
 
   useEffect(() => {
     dailyPic();
+    marsRoverPics();
   }, [])
 
   return (

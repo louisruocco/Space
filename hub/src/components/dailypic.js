@@ -6,6 +6,7 @@ const DailyPic = ({url, explanation}) => {
             <div className="title">
                 <h2>Photo of the Day:</h2>
             </div>
+            <hr />
             <img src={url} alt="" />
             <p>{explanation}</p>
         </div>

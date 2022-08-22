@@ -7,8 +7,8 @@ function Nav(){
                 <ul>
                     <li><a href="#news">Latest News</a></li>
                     <li><a href="#mars">Mars</a></li>
-                    <li><a href="">Journal</a></li>
-                    <li><a href="">Login/Signup</a></li>
+                    <li>Journal</li>
+                    <li>Login/Signup</li>
                 </ul>
             </nav>
         </div>

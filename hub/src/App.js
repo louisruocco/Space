@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
+import cheerio from "cheerio";
 import './App.css';
 import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
@@ -14,8 +16,16 @@ function App() {
   const dailyPic = async () => {
     const response = await fetch(picOfDay);
     const data = await response.json();
-    console.log(data);
     setPic(data);
+  }
+
+  const news = async () => {
+    const url = "https://www.nasa.gov/"
+    const {data} = await axios.get(url);
+    const headline = {headline: "", link: ""};
+    const $ = await cheerio.load(data);
+    const text = $("div#main")
+    console.log(data);
   }
 
   const marsRoverPics = async () => {
@@ -32,6 +42,7 @@ function App() {
 
   useEffect(() => {
     dailyPic();
+    news();
     marsRoverPics();
   }, [])
 
@@ -47,12 +58,12 @@ function App() {
         explanation={pic.explanation}
       />
       <div className="news">
-        <h2>Latest News:</h2>
+        <h2 id="news">Latest News:</h2>
       </div>
       <hr />
       <div className="mars">
         <div className="subtitle">
-          <h2>Mars:</h2>
+          <h2 id="mars">Mars:</h2>
           <hr />
         </div>
         <div className="subtitle">

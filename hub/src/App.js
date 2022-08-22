@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import cheerio from "cheerio";
 import './App.css';
 import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
@@ -19,6 +18,12 @@ function App() {
     setPic(data);
   }
 
+  const news = async () => {
+    const baseURL = "https://www.nasa.gov/";
+    const response = await axios.get(baseURL);
+    console.log(response);
+  }
+
   const marsRoverPics = async () => {
     const date = new Date();
     const year = date.getFullYear();
@@ -33,6 +38,7 @@ function App() {
 
   useEffect(() => {
     dailyPic();
+    news();
     marsRoverPics();
   }, [])
 
@@ -61,7 +67,7 @@ function App() {
         </div>
         {marsPics.map(image => (
           <MarsRoverImages 
-              key={image.key}
+              key={image.id}
               url={image.img_src}
           />
         ))}

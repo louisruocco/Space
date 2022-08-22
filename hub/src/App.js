@@ -8,13 +8,13 @@ function App() {
 
   const [pic, setPic] = useState("");
   const [marsPics, setMarsPics] = useState([]);
-  const [marsWeather, setMarsWeather] = useState("");
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
 
   const dailyPic = async () => {
     const response = await fetch(picOfDay);
     const data = await response.json();
+    console.log(data);
     setPic(data);
   }
 
@@ -59,10 +59,10 @@ function App() {
         <h3>Todays Mars Rover Images:</h3>
         </div>
         {marsPics.map(image => (
-        <MarsRoverImages 
-            key={image.key}
-            url={image.img_src}
-        />
+          <MarsRoverImages 
+              key={image.key}
+              url={image.img_src}
+          />
         ))}
       </div>
     </div>

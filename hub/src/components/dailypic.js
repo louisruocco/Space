@@ -8,6 +8,7 @@ const DailyPic = ({url, explanation}) => {
             </div>
             <hr />
             <img src={url} alt="" />
+            <iframe width="320" height="240" src={url}></iframe>
             <p>{explanation}</p>
         </div>
     )

@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import './App.css';
 import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
+import Article from "./components/article";
 import MarsRoverImages from "./components/marsImages";
 
 function App() {
 
   const [pic, setPic] = useState("");
+  const [articles, setArticles] = useState([]);
   const [marsPics, setMarsPics] = useState([]);
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
@@ -19,9 +20,10 @@ function App() {
   }
 
   const news = async () => {
-    const baseURL = "https://www.nasa.gov/";
-    const response = await axios.get(baseURL);
-    console.log(response);
+    const response =  await fetch("https://api.spaceflightnewsapi.net/v3/articles");
+    const data = await response.json();
+    console.log(data);
+    setArticles(data);
   }
 
   const marsRoverPics = async () => {
@@ -55,6 +57,15 @@ function App() {
       />
       <div className="news">
         <h2 id="news">Latest News:</h2>
+        {articles.map(article => (
+          <Article 
+            key={article.id}
+            link={article.url}
+            headline={article.title}
+            summary={article.summary}
+            imageLink={article.imageUrl}
+          />
+        ))}
       </div>
       <hr />
       <div className="mars">

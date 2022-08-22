@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import './App.css';
 import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
 import Article from "./components/article";
@@ -22,7 +21,6 @@ function App() {
   const news = async () => {
     const response =  await fetch("https://api.spaceflightnewsapi.net/v3/articles");
     const data = await response.json();
-    console.log(data);
     setArticles(data);
   }
 
@@ -46,17 +44,25 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
       <div className="title">
+        <div className="overlay"></div>
         <h1>Space</h1>
       </div>
+      <Nav />
+      <div className="subtitle">
+        <h2>Photo of the Day:</h2>
+      </div>
+      <hr />
       <DailyPic
         key={pic.date}
         url={pic.url}
         explanation={pic.explanation}
       />
       <div className="news">
-        <h2 id="news">Latest News:</h2>
+        <div className="subtitle">
+          <h2 id="news">Latest News:</h2>
+        </div>
+        <hr />
         {articles.map(article => (
           <Article 
             key={article.id}

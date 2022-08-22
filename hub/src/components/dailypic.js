@@ -3,12 +3,8 @@ import React from "react";
 const DailyPic = ({url, explanation}) => {
     return (
         <div className="dailyPic">
-            <div className="title">
-                <h2>Photo of the Day:</h2>
-            </div>
-            <hr />
             <img src={url} />
-            <iframe title="videoOfDay" width="320" height="240" src={url}></iframe>
+            <iframe title="videoOfDay" width = "600px" height = "400px" src={url}></iframe>
             <p>{explanation}</p>
         </div>
     )

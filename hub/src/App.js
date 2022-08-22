@@ -19,15 +19,6 @@ function App() {
     setPic(data);
   }
 
-  const news = async () => {
-    const url = "https://www.nasa.gov/"
-    const {data} = await axios.get(url);
-    const headline = {headline: "", link: ""};
-    const $ = await cheerio.load(data);
-    const text = $("div#main")
-    console.log(data);
-  }
-
   const marsRoverPics = async () => {
     const date = new Date();
     const year = date.getFullYear();
@@ -42,7 +33,6 @@ function App() {
 
   useEffect(() => {
     dailyPic();
-    news();
     marsRoverPics();
   }, [])
 

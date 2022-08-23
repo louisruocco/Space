@@ -15,6 +15,7 @@ function App() {
   const dailyPic = async () => {
     const response = await fetch(picOfDay);
     const data = await response.json();
+    console.log(data);
     setPic(data);
   }
 
@@ -57,6 +58,7 @@ function App() {
         key={pic.date}
         url={pic.url}
         explanation={pic.explanation}
+        type={pic.media_type}
       />
       <div className="news">
         <div className="subtitle">

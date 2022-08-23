@@ -85,7 +85,7 @@ hr {
 }
 
 .dailyPic {
-  padding: 20px;
+  padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,4 +97,14 @@ hr {
 
 .dailyPic iframe {
   margin-right: 10%;
+}
+
+.dailyPic img {
+  width: 600px;
+  margin-right: 5%;
+  border-radius: 20px;
+}
+
+.dailyPic p {
+  font-size: 20px;
 }

@@ -89,7 +89,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 85%;
+  width: 80%;
   margin: auto;
   text-align: justify;
   padding-bottom: 150px;
@@ -106,5 +106,6 @@ hr {
 }
 
 .dailyPic p {
-  font-size: 20px;
+  font-size: 25px;
+
 }

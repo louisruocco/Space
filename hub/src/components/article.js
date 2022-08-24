@@ -5,9 +5,11 @@ const Article = ({link, headline, summary, imageLink}) => {
         <div className="content">
             <div className="article">
                 <a href={link} target = "__blank">
-                    <h3>{headline}</h3>
                     <img src={imageLink}/>
-                    <p>{summary}</p>
+                    <div className="text">
+                        <h3>{headline}</h3>
+                        <p>{summary}</p>
+                    </div>
                 </a>
             </div>
         </div>

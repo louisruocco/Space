@@ -1,6 +1,6 @@
 import React from "react";
 
-const Article = ({link, headline, summary, imageLink}) => {
+const Article = ({link, headline, imageLink}) => {
     return (
         <div className="content">
             <div className="article">
@@ -8,7 +8,6 @@ const Article = ({link, headline, summary, imageLink}) => {
                     <img src={imageLink}/>
                     <div className="text">
                         <h3>{headline}</h3>
-                        <p>{summary}</p>
                     </div>
                 </a>
             </div>

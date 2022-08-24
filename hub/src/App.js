@@ -56,29 +56,26 @@ function App() {
         explanation={pic.explanation}
         type={pic.media_type}
       />
+      <div className="subtitle">
+          <h2 id="latest-news">Latest News:</h2>
+      </div>
+      <hr />
       <div className="news">
-        <div className="subtitle">
-          <h2 id="news">Latest News:</h2>
-        </div>
-        <hr />
         {articles.map(article => (
           <Article 
             key={article.id}
             link={article.url}
             headline={article.title}
-            summary={article.summary}
             imageLink={article.imageUrl}
           />
         ))}
       </div>
+      <div className="subtitle">
+          <h2 id="mars-photos">Mars:</h2>
+      </div>
       <div className="mars">
-        <div className="subtitle">
-          <h2 id="mars">Mars:</h2>
-        </div>
         <hr />
-        <div className="subtitle">
         <h3>Todays Mars Rover Images:</h3>
-        </div>
         {marsPics.map(image => (
           <MarsRoverImages 
               key={image.id}

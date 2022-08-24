@@ -8,8 +8,10 @@ const DailyPic = ({url, explanation, type}) => {
                     <h2>Photo of the Day:</h2>
                 </div>
                 <hr />
-                <img src={url} alt={url} />
-                <p>{explanation}</p>
+                <div className="pic">
+                    <img src={url} alt={url} />
+                    <p>{explanation}</p>
+                </div>
             </div>
         )
     } else {
@@ -19,8 +21,10 @@ const DailyPic = ({url, explanation, type}) => {
                     <h2>Video of the Day:</h2>
                 </div>
                 <hr />
-                <iframe title="videoOfDay" width = "600px" height = "400px" src={url}></iframe>
-                <p>{explanation}</p>
+                <div className="video">
+                    <iframe title="videoOfDay" width = "600px" height = "400px" src={url}></iframe>
+                    <p>{explanation}</p>
+                </div>
             </div>
         )
     }

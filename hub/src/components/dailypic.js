@@ -6,8 +6,8 @@ const DailyPic = ({url, explanation, type}) => {
             <div className="dailyPic">
                 <div className="subtitle">
                     <h2>Photo of the Day:</h2>
+                    <hr />
                 </div>
-                <hr />
                 <div className="pic">
                     <img src={url} alt={url} />
                     <p>{explanation}</p>

@@ -88,7 +88,7 @@ hr {
 .mars h3 {
   margin-top: 30px;
   text-align: center;
-  font-size: 25px;
+  font-size: px;
 }
 
 .subtitle {
@@ -167,4 +167,18 @@ hr {
   color: seagreen;
   background: rgba(36, 34, 34, 0.8);
   transition: .3s ease;
+}
+
+.mars {
+  display: grid;
+  grid-template-columns: 400px 400px 400px 400px;
+  column-gap: 20px;
+  max-width: 100%;
+  margin: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.mars img {
+  width: 400px;
 }

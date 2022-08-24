@@ -4,7 +4,7 @@ const MarsRoverImages = ({url}) => {
     return (
         <div className="marsImages">
             <div className="images">
-                <img src={url} alt="" />
+                <img src={url} alt={url} />
             </div>
         </div>
     )

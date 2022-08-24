@@ -32,7 +32,7 @@ function App() {
     const day = date.getDate();
     const apiDate = `${year}-${month}-${day}`
 
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${apiDate}&camera=mast&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ`)
+    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${apiDate}&camera=fhaz&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ`)
     const data = await response.json();
     setMarsPics(data.photos, apiDate);
   }
@@ -50,10 +50,6 @@ function App() {
         <h1>Space</h1>
       </div>
       <Nav />
-      <div className="subtitle">
-        <h2>Photo of the Day:</h2>
-      </div>
-      <hr />
       <DailyPic
         key={pic.date}
         url={pic.url}

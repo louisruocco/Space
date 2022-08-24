@@ -39,6 +39,7 @@ hr {
   background: white;
   opacity: .8;
   margin-bottom: 80px;
+  z-index: 1;
 }
 
 .nav ul {
@@ -83,19 +84,25 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10%;
+  font-size: 20px;
+}
+
+.mars, .news {
   margin-top: 110px;
-  font-size: 25px;
 }
 
 .dailyPic {
-  padding: 40px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 80%;
   margin: auto;
   text-align: justify;
-  padding-bottom: 150px;
+  background: black;
+  color: white;
+  padding: 30px;
 }
 
 .dailyPic iframe {
@@ -103,13 +110,13 @@ hr {
 }
 
 .dailyPic img {
-  width: 600px;
+  width: 500px;
   margin-right: 5%;
   border-radius: 20px;
 }
 
 .dailyPic p {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .content {

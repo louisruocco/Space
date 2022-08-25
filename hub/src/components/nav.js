@@ -6,7 +6,7 @@ function Nav(){
             <nav>
                 <ul>
                     <li><a href="#latest-news">Latest News</a></li>
-                    <li><a href="#mars">Mars</a></li>
+                    <li><a href="#mars-photos">Mars</a></li>
                     <li>Journal</li>
                     <li>Login/Signup</li>
                 </ul>

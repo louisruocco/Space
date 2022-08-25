@@ -5,7 +5,6 @@ import Article from "./components/article";
 import MarsRoverImages from "./components/marsImages";
 
 function App() {
-
   const [pic, setPic] = useState("");
   const [articles, setArticles] = useState([]);
   const [marsPics, setMarsPics] = useState([]);
@@ -62,7 +61,7 @@ function App() {
       <hr />
       <div className="news">
         {articles.map(article => (
-          <Article 
+          <Article
             key={article.id}
             link={article.url}
             headline={article.title}

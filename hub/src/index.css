@@ -122,10 +122,13 @@ hr {
 
 .news {
     display: grid;
-    grid-template-columns: 700px 700px;
+    grid-template-columns: 35% 35%;
+    grid-template-rows: 1fr 1fr;
     margin: auto;
     align-items: center;
     justify-content: center;
+    grid-template-areas:
+    "content content"
 }
 
 .content {
@@ -134,12 +137,16 @@ hr {
   margin: auto;
 }
 
+.content:nth-child(3n){
+  grid-area: content;
+}
+
 .article {
   transition: .3s ease;
 }
 
 .article img {
-  width: 600px;
+  width: 100%;
   height: 350px;
   display: flex;
 }
@@ -171,8 +178,8 @@ hr {
 
 .mars {
   display: grid;
-  grid-template-columns: 400px 400px 400px 400px;
-  column-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 5px;
   max-width: 100%;
   margin: 50px;
   justify-content: center;

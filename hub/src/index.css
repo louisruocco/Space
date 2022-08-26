@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  max-width: 100%;
 }
 
 html {
@@ -122,12 +123,11 @@ hr {
 
 .news {
     display: grid;
-    grid-template-columns: 1fr 0.25fr 0.25fr 1fr;
-    margin: auto;
+    grid-template-columns: 45% 45%;
     align-items: center;
     justify-content: center;
     grid-template-areas:
-    "first first first first"
+    "first first"
     "second third "
     "fourth sixth"
     "seventh seventh"
@@ -143,9 +143,6 @@ hr {
 
 .content:first-child {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   grid-area: first; 
 }
 
@@ -158,9 +155,18 @@ hr {
 }
 
 .article img {
-  width: 600px;
   height: 350px;
   display: flex;
+}
+
+.article img:first-child {
+  width: 100%;
+  height: 100%;
+}
+
+.article img:last-child {
+  width: 100%;
+  height: 100%;
 }
 
 .article h3 {
@@ -168,7 +174,7 @@ hr {
   text-align: center;
   bottom: 15px;
   color: white;
-  width: 600px;
+  width: 100%;
   background: rgb(36, 34, 34);
   height: 100px;
   display: flex;
@@ -182,15 +188,9 @@ hr {
   transform: scale(1.025);
 }
 
-.article h3:hover {
-  color: seagreen;
-  background: rgba(36, 34, 34, 0.8);
-  transition: .3s ease;
-}
-
 .mars {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 5px;
   max-width: 100%;
   margin: 50px;

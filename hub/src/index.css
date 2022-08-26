@@ -122,13 +122,17 @@ hr {
 
 .news {
     display: grid;
-    grid-template-columns: 35% 35%;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 0.25fr 0.25fr 1fr;
     margin: auto;
     align-items: center;
     justify-content: center;
     grid-template-areas:
-    "content content"
+    "first first first first"
+    "second third "
+    "fourth sixth"
+    "seventh seventh"
+    "eigth ninth"
+    "tenth tenth"
 }
 
 .content {
@@ -137,8 +141,16 @@ hr {
   margin: auto;
 }
 
-.content:nth-child(3n){
-  grid-area: content;
+.content:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: first; 
+}
+
+.content:last-child {
+  grid-area: tenth;
 }
 
 .article {
@@ -146,7 +158,7 @@ hr {
 }
 
 .article img {
-  width: 100%;
+  width: 600px;
   height: 350px;
   display: flex;
 }

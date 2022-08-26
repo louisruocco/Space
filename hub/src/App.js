@@ -55,8 +55,9 @@ function App() {
         explanation={pic.explanation}
         type={pic.media_type}
       />
+      <div className="anchor" id="latest-news"></div>
       <div className="subtitle">
-          <h2 id="latest-news">Latest News:</h2>
+          <h2>Latest News:</h2>
       </div>
       <hr />
       <div className="news">
@@ -69,11 +70,14 @@ function App() {
           />
         ))}
       </div>
+      <div className="anchor" id="mars-photos"></div>
       <div className="subtitle">
-          <h2 id="mars-photos">Mars:</h2>
+          <h2>Mars:</h2>
       </div>
       <hr />
-      <h3>Todays Mars Rover Images:</h3>
+      <div className="mars-subtitle">
+        <h3>Todays Mars Rover Images:</h3>
+      </div>
       <div className="mars">
         {marsPics.map(image => (
           <MarsRoverImages 

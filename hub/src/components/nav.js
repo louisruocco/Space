@@ -8,7 +8,7 @@ function Nav(){
                     <li><a href="#latest-news">Latest News</a></li>
                     <li><a href="#mars-photos">Mars</a></li>
                     <li>Journal</li>
-                    <li>Login/Signup</li>
+                    <li id="login">Login/Signup</li>
                 </ul>
             </nav>
         </div>

@@ -19,12 +19,6 @@ a {
   transition: .3s ease;
 }
 
-.nav a:hover {
-  background: navy;
-  transition: .3s ease;
-  color: white;
-}
-
 ul {
   list-style: none;
 }
@@ -54,6 +48,19 @@ hr {
 .nav a {
   font-size: 20px;
   opacity: 1;
+}
+
+.nav a:hover {
+  background: navy;
+  transition: .3s ease;
+  color: white;
+}
+
+#login {
+  background: navy;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .title {

@@ -28,10 +28,10 @@ function App() {
     const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth();
-    const day = date.getDate() - 2;
+    const day = date.getDate();
     const apiDate = `${year}-${month}-${day}`
 
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${apiDate}&camera=mast&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ`)
+    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${apiDate}&camera=fhaz&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ`)
     const data = await response.json();
     setMarsPics(data.photos, apiDate);
   }

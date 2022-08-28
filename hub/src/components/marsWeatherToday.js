@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodaysMarsWeather = ({temp}) => {
+const MarsWeatherToday = ({temp}) => {
     return (
         <div className="marsWeather">
             <div className="today">
@@ -11,4 +11,4 @@ const TodaysMarsWeather = ({temp}) => {
     )
 }
 
-export default TodaysMarsWeather;
+export default MarsWeatherToday;

@@ -3,13 +3,16 @@ import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
 import Article from "./components/article";
 import MarsWeatherToday from "./components/marsWeatherToday";
+import MarsWeatherWeek from "./components/marsWeatherWeek"
 import MarsRoverImages from "./components/marsImages";
+import e from "connect-flash";
 
 function App() {
+
   const [pic, setPic] = useState("");
   const [articles, setArticles] = useState([]);
-  const [marsTempToday, setMarsTempToday] = useState([]); 
-  const [marsTempsWeek, setMarsTempsWeek] = useState([]); 
+  const [marsTemp, setMarsTemp] = useState([]); 
+  const [marsTempWeek, setMarsTempWeek] = useState([]);
   const [marsPics, setMarsPics] = useState([]);
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
@@ -29,8 +32,10 @@ function App() {
   const marsWeather = async () => {
     const response = await fetch("https://mars.nasa.gov/rss/api/?feed=weather&category=insight_temperature&feedtype=json&ver=1.0");
     const data = await response.json();
-    const today = Object.entries(data);
-    setMarsTempToday(today[0][1].AT.av);
+    const temp = Object.entries(data);
+    const today = temp[0][1].AT.av
+    setMarsTemp(today);
+    setMarsTempWeek(Object.values(data));
   }
 
   const marsRoverPics = async () => {
@@ -90,8 +95,14 @@ function App() {
           <h3>The Weather on Mars</h3>
         </div>
         <MarsWeatherToday 
-          temp={marsTempToday}
+          temp={marsTemp}
         />
+        <h3>This Week:</h3>
+        {marsTempWeek.map(temps => (
+          <MarsWeatherWeek 
+            temp={Object.values(temps)[0].av}
+          /> 
+        ))}
         <div className="mars-subtitle">
           <h3>Todays Mars Rover Images:</h3>
         </div>

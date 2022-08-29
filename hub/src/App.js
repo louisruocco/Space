@@ -2,11 +2,15 @@ import React, {useEffect, useState} from "react";
 import Nav from "./components/nav";
 import DailyPic from "./components/dailypic";
 import Article from "./components/article";
+import MarsWeatherToday from "./components/marsWeatherToday";
 import MarsRoverImages from "./components/marsImages";
+import e from "connect-flash";
 
 function App() {
+
   const [pic, setPic] = useState("");
   const [articles, setArticles] = useState([]);
+  const [marsTemp, setMarsTemp] = useState([]); 
   const [marsPics, setMarsPics] = useState([]);
 
   const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
@@ -14,7 +18,6 @@ function App() {
   const dailyPic = async () => {
     const response = await fetch(picOfDay);
     const data = await response.json();
-    console.log(data);
     setPic(data);
   }
 
@@ -22,6 +25,14 @@ function App() {
     const response =  await fetch("https://api.spaceflightnewsapi.net/v3/articles");
     const data = await response.json();
     setArticles(data);
+  }
+
+  const marsWeather = async () => {
+    const response = await fetch("https://mars.nasa.gov/rss/api/?feed=weather&category=insight_temperature&feedtype=json&ver=1.0");
+    const data = await response.json();
+    const temp = Object.entries(data);
+    const today = temp[0][1].AT.av
+    setMarsTemp(today)
   }
 
   const marsRoverPics = async () => {
@@ -39,6 +50,7 @@ function App() {
   useEffect(() => {
     dailyPic();
     news();
+    marsWeather();
     marsRoverPics();
   }, [])
 
@@ -71,21 +83,27 @@ function App() {
         ))}
       </div>
       <div className="anchor" id="mars-photos"></div>
-      <div className="subtitle">
-          <h2>Mars:</h2>
-      </div>
-      <hr />
-      <div className="mars-subtitle">
-        <h3>Todays Mars Rover Images:</h3>
-      </div>
       <div className="mars">
+        <div className="subtitle">
+            <h2>Mars:</h2>
+        </div>
+        <hr />
+        <div className="mars-subtitle">
+          <h3>The Weather on Mars</h3>
+        </div>
+        <MarsWeatherToday 
+          temp={marsTemp}
+        />
+        <div className="mars-subtitle">
+          <h3>Todays Mars Rover Images:</h3>
+        </div>
         {marsPics.map(image => (
-          <MarsRoverImages 
-              key={image.id}
-              url={image.img_src}
-          />
-        ))}
-      </div>
+            <MarsRoverImages 
+                key={image.id}
+                url={image.img_src}
+            />
+          ))}
+        </div>
     </div>
   );
 }

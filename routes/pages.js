@@ -12,4 +12,8 @@ router.get("/space/register", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/static", "register.html"));
 });
 
+router.get("/space/journal", (req, res) => {
+    res.render("journal");
+});
+
 module.exports = router;

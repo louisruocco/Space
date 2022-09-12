@@ -4,6 +4,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const users = require("./db/users");
+const entries = require("./db/journal");
 const flash = require("connect-flash");
 const ejs = require("ejs");
 const app = express();

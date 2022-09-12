@@ -21,7 +21,7 @@ router.post("/space/journal", async (req, res) => {
         return res.send("Entry for This date already exists, please Amend or delete existing entry");
     } else {
         await entries.create({
-            userId: req.session.userId,
+            userId: 1,
             title: title,
             date: date,
             time: time,
@@ -29,6 +29,8 @@ router.post("/space/journal", async (req, res) => {
             entry: entry
         })
     }
+
+    res.redirect("back");
 })
 
 module.exports = router;

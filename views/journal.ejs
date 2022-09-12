@@ -37,6 +37,13 @@
     </div>
     <div class="recent-entries">
         <h3>Recent Journal Entries:</h3>
+        <div class="entries">
+            <% getEntries.forEach(entry => { %>
+                <div class="entry">
+                    <h4><%= entry.date %></h4>
+                </div>
+            <% }) %>
+        </div>
     </div>
 </body>
 </html>

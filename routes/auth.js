@@ -2,7 +2,6 @@ const express = require("express");
 const session = require("express-session");
 const users = require("../db/users");
 const entries = require("../db/journal");
-const path = require("path");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
@@ -22,7 +21,7 @@ router.post("/space/journal", async (req, res) => {
     } else {
         await entries.create({
             userId: req.session.userId,
-            date: date,
+            date: `Journal Entry - ${date}`,
             location: location,
             entry: entry
         })

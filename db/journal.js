@@ -7,7 +7,9 @@ const db = mongoose.connect(process.env.DB_URI, () => console.log("Journal Schem
 
 const journalSchema = new mongoose.Schema({
     userId: Number,
+    title: String,
     date: String,
+    time: String,
     location: String,
     entry: String,
 });

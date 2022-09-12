@@ -20,9 +20,17 @@
     </div>
     <div class="input-section">
         <form action="/auth/space/journal" method = "POST">
+            <div class="title-section">
+                <span>Title:</span>
+                <input type="text" name="title">
+            </div>
             <div class="date-section">
                 <span>Date:</span>
                 <input type="text" name="date">
+            </div>
+            <div class="time-section">
+                <span>Time:</span>
+                <input type="text" name="time">
             </div>
             <div class="location-section">
                 <span>Location:</span>
@@ -40,7 +48,7 @@
         <div class="entries">
             <% getEntries.forEach(entry => { %>
                 <div class="entry">
-                    <h4><%= entry.date %></h4>
+                    <h4><a href="">Journal Entry - <%= entry.title %></a></h4>
                 </div>
             <% }) %>
         </div>

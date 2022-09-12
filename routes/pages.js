@@ -24,6 +24,7 @@ router.get("/space/register", (req, res) => {
 
 router.get("/space/journal", async (req, res) => {
     const getEntries = await entries.find({})
+    console.log(getEntries)
     res.render("journal", {getEntries});
 });
 

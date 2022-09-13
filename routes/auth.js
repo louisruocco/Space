@@ -13,7 +13,7 @@ const redirectLanding = (req, res, next) => {
     }
 }
 
-router.post("/space/journal", async (req, res) => {
+router.post("/space/journal", redirectLanding, async (req, res) => {
     const {title, date, time, location, entry} = req.body;
     const dateCheck = await entries.find({title: title});
     console.log(dateCheck);

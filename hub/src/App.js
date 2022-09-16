@@ -6,7 +6,6 @@ import MarsWeatherToday from "./components/marsWeatherToday";
 import MarsRoverImages from "./components/marsImages";
 import axios from "axios";
 
-
 function App() {
 
   const [pic, setPic] = useState("");

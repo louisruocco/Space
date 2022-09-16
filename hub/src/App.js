@@ -21,13 +21,13 @@ function App() {
 
   const news = async () => {
     const response =  await axios.get("/space/news");
-    console.log(response.data);
     setArticles(response.data);
   }
 
   const marsWeather = async () => {
     const response = await axios.get("/space/marsWeather");
-    setMarsTemp(response);
+    console.log(Object.entries(response.data)[6][1].AT.av);
+    setMarsTemp(Object.entries(response.data)[6][1].AT.av);
   }
 
   const marsRoverPics = async () => {
@@ -66,6 +66,21 @@ function App() {
           />
         ))}
       </div>
+      <div className="mars">
+        <div className="subtitle">
+            <h2>Mars:</h2>
+        </div>
+        <hr />
+        <div className="mars-subtitle">
+          <h3>The Weather on Mars</h3>
+        </div>
+        <MarsWeatherToday 
+          temp={marsTemp}
+        />
+        <div className="mars-subtitle">
+          <h3>Todays Mars Rover Images:</h3>
+        </div>
+        </div>
     </div>
   );
 }

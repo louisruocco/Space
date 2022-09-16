@@ -43,8 +43,20 @@ router.get("/space/journal", redirectLogin, async (req, res) => {
 router.get("/space/picOfDay", async (req, res) => {
     const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_KEY}`);
     const data = await response.json();
-    console.log(data);
     res.json(data)
+});
+
+router.get("/space/news", async (req, res) => {
+    const response = await fetch("https://api.spaceflightnewsapi.net/v3/articles");
+    const data = await response.json();
+    console.log(data);
+    res.json(data);
+})
+
+router.get("/space/marsWeather", async (req, res) => {
+    const response = await fetch("https://mars.nasa.gov/rss/api/?feed=weather&category=insight_temperature&feedtype=json&ver=1.0")
+    const data = await response.json();
+    res.json(data);
 })
 
 module.exports = router;

@@ -16,34 +16,22 @@ function App() {
 
   const dailyPic = async () => {
     const response = await axios.get("/space/picOfDay");
-    console.log(response.data);
     setPic(response.data);
   }
 
   const news = async () => {
-    const response =  await fetch("https://api.spaceflightnewsapi.net/v3/articles");
-    const data = await response.json();
-    setArticles(data);
+    const response =  await axios.get("/space/news");
+    console.log(response.data);
+    setArticles(response.data);
   }
 
   const marsWeather = async () => {
-    const response = await fetch("https://mars.nasa.gov/rss/api/?feed=weather&category=insight_temperature&feedtype=json&ver=1.0");
-    const data = await response.json();
-    const temp = Object.entries(data);
-    const today = temp[0][1].AT.av
-    setMarsTemp(today)
+    const response = await axios.get("/space/marsWeather");
+    setMarsTemp(response);
   }
 
   const marsRoverPics = async () => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    const apiDate = `${year}-${month}-${day}`
-
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${apiDate}&camera=fhaz&api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ`)
-    const data = await response.json();
-    setMarsPics(data.photos, apiDate);
+    return
   }
 
   useEffect(() => {
@@ -60,17 +48,14 @@ function App() {
         <h1>Space</h1>
       </div>
       <Nav />
-      <DailyPic
-        key={pic.date}
-        url={pic.url}
-        explanation={pic.explanation}
-        type={pic.media_type}
-      />
-      <div className="anchor" id="latest-news"></div>
-      <div className="subtitle">
-          <h2>Latest News:</h2>
+      <div className="daily-pic">
+        <DailyPic
+          key={pic.date}
+          url={pic.url}
+          explanation={pic.explanation}
+          type={pic.media_type}
+        />
       </div>
-      <hr />
       <div className="news">
         {articles.map(article => (
           <Article
@@ -81,28 +66,6 @@ function App() {
           />
         ))}
       </div>
-      <div className="anchor" id="mars-photos"></div>
-      <div className="mars">
-        <div className="subtitle">
-            <h2>Mars:</h2>
-        </div>
-        <hr />
-        <div className="mars-subtitle">
-          <h3>The Weather on Mars</h3>
-        </div>
-        <MarsWeatherToday 
-          temp={marsTemp}
-        />
-        <div className="mars-subtitle">
-          <h3>Todays Mars Rover Images:</h3>
-        </div>
-        {marsPics.map(image => (
-            <MarsRoverImages 
-                key={image.id}
-                url={image.img_src}
-            />
-          ))}
-        </div>
     </div>
   );
 }

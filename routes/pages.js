@@ -23,7 +23,7 @@ const redirectLogin = (req, res, next) => {
 
 router.get("/", (req, res) => {
     const {userId} = req.session;
-    res.send("React page under construction");
+    res.sendFile(path.join(__dirname, "../hub/build", "Space.html"));
 });
 
 router.get("/space/register", (req, res) => {
@@ -39,5 +39,12 @@ router.get("/space/journal", redirectLogin, async (req, res) => {
     console.log(getEntries)
     res.render("journal", {getEntries});
 });
+
+router.get("/space/picOfDay", async (req, res) => {
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_KEY}`);
+    const data = await response.json();
+    console.log(data);
+    res.json(data)
+})
 
 module.exports = router;

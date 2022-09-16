@@ -4,7 +4,8 @@ import DailyPic from "./components/dailypic";
 import Article from "./components/article";
 import MarsWeatherToday from "./components/marsWeatherToday";
 import MarsRoverImages from "./components/marsImages";
-import e from "connect-flash";
+import axios from "axios";
+
 
 function App() {
 
@@ -13,12 +14,10 @@ function App() {
   const [marsTemp, setMarsTemp] = useState([]); 
   const [marsPics, setMarsPics] = useState([]);
 
-  const picOfDay = "https://api.nasa.gov/planetary/apod?api_key=GyZy1tC70NfISqhmiPheh2WCzmiARYOuS70JCKsZ";
-
   const dailyPic = async () => {
-    const response = await fetch(picOfDay);
-    const data = await response.json();
-    setPic(data);
+    const response = await axios.get("/space/picOfDay");
+    console.log(response.data);
+    setPic(response.data);
   }
 
   const news = async () => {

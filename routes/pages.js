@@ -36,7 +36,6 @@ router.get("/space/login", (req, res) => {
 
 router.get("/space/journal", redirectLogin, async (req, res) => {
     const getEntries = await entries.find({})
-    console.log(getEntries)
     res.render("journal", {getEntries});
 });
 
@@ -49,7 +48,6 @@ router.get("/space/picOfDay", async (req, res) => {
 router.get("/space/news", async (req, res) => {
     const response = await fetch("https://api.spaceflightnewsapi.net/v3/articles");
     const data = await response.json();
-    console.log(data);
     res.json(data);
 });
 

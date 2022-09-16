@@ -26,12 +26,12 @@ function App() {
 
   const marsWeather = async () => {
     const response = await axios.get("/space/marsWeather");
-    console.log(Object.entries(response.data)[6][1].AT.av);
     setMarsTemp(Object.entries(response.data)[6][1].AT.av);
   }
 
   const marsRoverPics = async () => {
-    return
+    const response = await axios.get("/space/marsRoverPics");
+    setMarsPics(response.data.photos);
   }
 
   useEffect(() => {
@@ -80,7 +80,13 @@ function App() {
         <div className="mars-subtitle">
           <h3>Todays Mars Rover Images:</h3>
         </div>
-        </div>
+        {marsPics.map(image => (
+          <MarsRoverImages 
+            key={image.id}
+            url={image.img_src}
+          />
+        ))}
+      </div>
     </div>
   );
 }

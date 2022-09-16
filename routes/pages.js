@@ -51,10 +51,22 @@ router.get("/space/news", async (req, res) => {
     const data = await response.json();
     console.log(data);
     res.json(data);
-})
+});
 
 router.get("/space/marsWeather", async (req, res) => {
     const response = await fetch("https://mars.nasa.gov/rss/api/?feed=weather&category=insight_temperature&feedtype=json&ver=1.0")
+    const data = await response.json();
+    res.json(data);
+});
+
+router.get("/space/marsRoverPics", async(req, res) => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate() - 7;
+    const apiDate = `${year}-${month}-${day}`
+
+    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${apiDate}&camera=fhaz&api_key=${process.env.NASA_KEY}`);
     const data = await response.json();
     res.json(data);
 })
